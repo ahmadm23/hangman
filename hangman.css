@@ -86,15 +86,15 @@ h1{
     justify-content: center;
 }
 
-/* .popup{
+ /* .popup{
     background-color: #2980b9;
     border-radius: 5px;
     box-shadow: 0 15px 10px 3px;
     padding: 20px;
     text-align: center;
-}
+} */
 
-.popup button{
+/* .popup button{
     cursor: pointer;
     background-color: #fff;
     color: #2980b9;
@@ -106,7 +106,7 @@ h1{
 
 .popup button: :active{
     transform: scale(0.98);
-}
+} */
 
 .popup button:focus{
     outline: 0;
@@ -121,10 +121,10 @@ h1{
     transition: transofrm 0.3s ease-in-out;
 }
 
-.notification-container p{
+/* .notification-container p{
     margin 0;
-}
+} */
 
 .notification-container.show{
     transform: translateY(-50px);
-} */
+} 
