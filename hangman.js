@@ -19,6 +19,25 @@ let selectedWord = words[Math.floor(Math.random() * words.length)];
 const correctLetters = [];
 const wrongLetters = [];
 
+
+var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
+'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+'t', 'u', 'v', 'w', 'x', 'y', 'z'];
+var buttons = function () {
+    myButtons = document.getElementById('buttons');
+    letters = document.createElement('ul');
+
+    for (var i = 0; i < alphabet.length; i++) {
+      letters.id = 'alphabet';
+      list = document.createElement('li');
+      list.id = 'letter';
+      list.innerHTML = alphabet[i];
+      check();
+      myButtons.appendChild(letters);
+      letters.appendChild(list);
+    }
+  }
+
 //Show hidden word
 function displayWord(){
     wordE1.innerHTML = `
@@ -119,3 +138,33 @@ playAgainBtn.addEventListener('click', () => {
 });
 
 displayWord();
+
+window.onload = function () {
+
+    var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
+          'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
+          't', 'u', 'v', 'w', 'x', 'y', 'z'];
+  
+  
+    // create alphabet ul
+    var buttons = function () {
+      myButtons = document.getElementById('alphabet');
+      letters = document.createElement('ul');
+  
+      for (var i = 0; i < alphabet.length; i++) {
+        letters.id = 'alphabet';
+        list = document.createElement('li');
+        list.id = 'letter';
+        list.innerHTML = alphabet[i];
+        check();
+        myButtons.appendChild(letters);
+        letters.appendChild(list);
+      }
+    }
+  
+    // OnClick Function
+     check = function () {
+    }
+      buttons();
+    }
+  
