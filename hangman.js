@@ -144,11 +144,13 @@ window.onload = function () {
     var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
           'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
           't', 'u', 'v', 'w', 'x', 'y', 'z'];
-  
-  
+    
+    var word ;              // Selected word
+    var counter ;           // Count correct geusses
+
     // create alphabet ul
     var buttons = function () {
-      myButtons = document.getElementById('alphabet');
+      myButtons = document.getElementById('buttons');
       letters = document.createElement('ul');
   
       for (var i = 0; i < alphabet.length; i++) {
@@ -162,9 +164,74 @@ window.onload = function () {
       }
     }
   
+    // Create geusses ul
+     result = function () {
+      wordHolder = document.getElementById('hold');
+      correct = document.createElement('ul');
+  
+      for (var i = 0; i < word.length; i++) {
+        correct.setAttribute('id', 'my-word');
+        guess = document.createElement('li');
+        guess.setAttribute('class', 'guess');
+        if (word[i] === "-") {
+          guess.innerHTML = "-";
+          space = 1;
+        } else {
+          guess.innerHTML = "_";
+        }
+  
+        geusses.push(guess);
+        wordHolder.appendChild(correct);
+        correct.appendChild(guess);
+      }
+    } 
+  
+  
     // OnClick Function
      check = function () {
+      list.onclick = function () {
+        var geuss = (this.innerHTML);
+        this.setAttribute("class", "active");
+        this.onclick = null;
+        for (var i = 0; i < word.length; i++) {
+          if (word[i] === geuss) {
+            geusses[i].innerHTML = geuss;
+            counter += 1;
+          } 
+        }
+        var j = (word.indexOf(geuss));
+        if (j === -1) {
+          lives -= 1;
+          comments();
+          animate();
+        } else {
+          comments();
+        }
+      }
     }
+    
+      
+    // Play
+    play = function () {
+      categories = [
+          ['application', 'programming', 'interface', 'wizard']
+      ];
+  
+      chosenCategory = categories[Math.floor(Math.random() * categories.length)];
+      word = chosenCategory[Math.floor(Math.random() * chosenCategory.length)];
+      word = word.replace(/\s/g, "-");
+      console.log(word);
       buttons();
+  
+      geusses = [ ];
+      lives = 10;
+      counter = 0;
+      space = 0;
+      result();
+      comments();
+      selectCat();
+      canvas();
     }
   
+    play();
+}
